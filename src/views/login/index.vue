@@ -14,7 +14,7 @@
         <el-icon :size="20" class="svg-container">
           <Lock />
         </el-icon>
-        <el-input v-model="form.password" show-pwd />
+        <el-input v-model="form.password" show-password />
       </el-form-item>
       <el-button type="primary" class="login-button" @click="handleLogin"
         >登录</el-button
@@ -24,11 +24,12 @@
 </template>
 
 <script setup>
-import { login } from '@/api/login'
+import { useStore } from 'vuex'
 import { ref } from 'vue'
+const store = useStore()
 const form = ref({
-  username: '',
-  password: ''
+  username: 'admin',
+  password: '123456'
 })
 const rules = ref({
   username: [
@@ -42,7 +43,7 @@ const formRef = ref(null)
 const handleLogin = () => {
   formRef.value.validate(async (valid) => {
     if (valid) {
-      return await login(form.value)
+      store.dispatch('app/login', form.value)
     } else {
       console.log('error submit!')
       return false
