@@ -7,7 +7,7 @@ const service = axios.create({
 
 service.interceptors.request.use(
   (config) => {
-    config.headers.Authorization = localStorage.getItem
+    config.headers.Authorization = localStorage.getItem('token')
     return config
   },
   (error) => {
@@ -20,7 +20,7 @@ service.interceptors.response.use(
     if (meta.status === 200 || meta.status === 201) {
       return data
     } else {
-      ElMessage.error('Oops, this is a error message.')
+      ElMessage.error(meta.msg)
       return Promise.reject(new Error(meta.msg))
     }
   },
