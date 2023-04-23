@@ -1,5 +1,5 @@
 <template>
-  <div class="hamburger-container" @click="toggleClick">
+  <div class="hamburger-container" @click="toggleClick" id="hamburger">
     <el-icon v-show="store.getters.siderType"><Fold /></el-icon>
     <el-icon v-show="!store.getters.siderType"><Expand /></el-icon>
   </div>
