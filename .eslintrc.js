@@ -15,7 +15,7 @@ module.exports = {
     'vue/multi-word-component-names': [
       'error',
       {
-        ignores: ['index', 'hamburger', 'breadcrumb', 'avatar']
+        ignores: ['index', 'hamburger', 'breadcrumb', 'avatar', 'lang']
       }
     ]
   }
